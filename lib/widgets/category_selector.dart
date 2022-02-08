@@ -27,7 +27,7 @@ class _CategorySelectorState extends State<CategorySelector> {
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 40.0,
+                horizontal: 45.0,
                 vertical: 30.0,
               ),
               child: Text(
@@ -37,7 +37,7 @@ class _CategorySelectorState extends State<CategorySelector> {
                       index == selectiveIndex ? Colors.white : Colors.white54,
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,
-                  letterSpacing: 1.2,
+                  letterSpacing: 0.0,
                 ),
               ),
             ),
