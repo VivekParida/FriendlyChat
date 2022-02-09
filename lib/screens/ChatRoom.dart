@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:friendly_chat/widgets/Chats.dart';
 import 'package:friendly_chat/widgets/category_selector.dart';
 
 class ChatRoom extends StatelessWidget {
@@ -32,36 +33,9 @@ class ChatRoom extends StatelessWidget {
           CategorySelector(),
           Expanded(
             child: Container(
-              decoration: BoxDecoration(),
               child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 0.0),
-                    child: Row(
-                      children: <Widget>[
-                        const Padding(
-                          padding: EdgeInsets.all(24.0),
-                          child: CircleAvatar(
-                            radius: 32.0,
-                          ),
-                        ),
-                        Column(
-                          children: const <Widget>[
-                            Text(
-                              'Name',
-                              style: TextStyle(
-                                  color: Colors.black54,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 0.0),
-                            ),
-                            //StringCodec()
-                            //  Message
-                          ],
-                        )
-                      ],
-                    ),
-                  )
+                children: const <Widget>[
+                  Chats(),
                 ],
               ),
             ),
