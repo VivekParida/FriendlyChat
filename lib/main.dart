@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:friendly_chat/screens/ChatScreen.dart';
-
+//import 'package:intl/intl.dart';
 import 'screens/ChatRoom.dart';
 
 void main() {
