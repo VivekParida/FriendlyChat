@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:friendly_chat/main.dart';
+import 'package:friendly_chat/widgets/Chats.dart';
 
 import 'ChatMessage.dart';
 import 'ChatRoom.dart';

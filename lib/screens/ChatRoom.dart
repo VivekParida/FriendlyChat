@@ -11,13 +11,8 @@ class ChatRoom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_rounded),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
         title: Text('ChatRoom'),
+        automaticallyImplyLeading: false,
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
