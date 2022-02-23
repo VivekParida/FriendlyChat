@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:fluttercontactpicker/fluttercontactpicker.dart';
 import 'package:friendly_chat/screens/ChatScreen.dart';
 
 class Chats extends StatelessWidget {
   const Chats({Key? key}) : super(key: key);
 
+  trialContact() async {
+    final contact = await FlutterContactPicker.pickFullContact();
+    var _contact = contact.name.toString();
+    print(_contact);
+  }
+
   @override
   Widget build(BuildContext context) {
+    trialContact();
     DateTime now = new DateTime.now();
     return Expanded(
-      child: ListView.builder(
+      child: ListView.separated(
+        separatorBuilder: (context, index) => Divider(
+          color: Colors.grey,
+        ),
         //scrollDirection: Axis.vertical,
         itemCount: Chat.length,
         itemBuilder: (BuildContext context, int index) {
@@ -33,7 +44,7 @@ class Chats extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           const Text(
-                            'Name',
+                            "Name",
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 20.0,
@@ -94,8 +105,54 @@ class Chats extends StatelessWidget {
   }
 }
 
-abstract class Chat {
+// class Chat {
+//   final FlutterContactPicker _flutterContactPicker = new FlutterContactPicker();
+//   static var length = 10;
+//   String? name;
+
+// }
+
+class Chat extends StatefulWidget {
   static var length = 10;
-  //final today = DateTime.now();
-  // final fiftyDaysFromNow = today.add(const Duration(days: 50));
+
+  @override
+  _ChatState createState() => new _ChatState();
+}
+
+class _ChatState extends State<Chat> {
+  final FlutterContactPicker _contactPicker = new FlutterContactPicker();
+  PhoneContact? _phoneContact;
+  String? _contact;
+
+  @override
+  Widget build(BuildContext context) {
+    print(FlutterContactPicker.pickFullContact().toString());
+    _buildChildren(context);
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+
+  List<Widget> _buildChildren(BuildContext context) {
+    return <Widget>[
+      if (_phoneContact != null)
+        Column(
+          children: <Widget>[
+            const Text("Phone contact:"),
+            Text("Name: ${_phoneContact!.fullName}"),
+            Text(
+                "Phone: ${_phoneContact!.phoneNumber!.number} (${_phoneContact!.phoneNumber!.label})")
+          ],
+        ),
+      ElevatedButton(
+        child: const Text("pick full contact"),
+        onPressed: () async {
+          final FullContact contact =
+              (await FlutterContactPicker.pickFullContact());
+          setState(() {
+            _contact = contact.toString();
+          });
+        },
+      ),
+    ];
+  }
 }
